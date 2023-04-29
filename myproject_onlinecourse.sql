@@ -1,0 +1,683 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 24, 2022 at 02:39 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `onlinecourse`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `creationDate` timestamp NULL DEFAULT current_timestamp(),
+  `updationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`, `creationDate`, `updationDate`) VALUES
+(1, 'admin', 'e807f1fcf82d132f9bb018ca6738a19f', '2022-01-31 16:21:18', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course`
+--
+
+CREATE TABLE `course` (
+  `id` int(11) NOT NULL,
+  `courseCode` varchar(255) DEFAULT NULL,
+  `courseName` varchar(255) DEFAULT NULL,
+  `courseUnit` varchar(255) DEFAULT NULL,
+  `noofSeats` int(11) DEFAULT NULL,
+  `creationDate` timestamp NULL DEFAULT current_timestamp(),
+  `updationDate` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`id`, `courseCode`, `courseName`, `courseUnit`, `noofSeats`, `creationDate`, `updationDate`) VALUES
+(1, 'UE20CS312', 'UE20CS312: Data Analytics', '5', 200, '2022-11-19 09:44:41', NULL),
+(2, 'UE20CS311', 'UE20CS311: Advanced Algorithms', '5', 200, '2022-11-19 09:45:37', NULL),
+(3, 'UE20CS314', 'UE20CS314: Applied Cryptography', '5', 200, '2022-11-19 09:46:59', NULL),
+(4, 'UE20CS313', 'UE20CS313: Internet Of Things', '5', 200, '2022-11-19 09:48:02', NULL),
+(5, 'UE20CS315', 'UE20CS315: Fundamentals Of AVR', '5', 200, '2022-11-19 09:48:54', NULL),
+(6, 'UE20CS316', 'UE20CS316: Human Computer Interaction', '5', 200, '2022-11-19 09:50:16', NULL),
+(7, 'UE20CS322', 'UE20CS322: Big Data', '5', 200, '2022-11-19 09:51:45', NULL),
+(8, 'UE20CS323', 'UE20CS323: Graph Theory and its Applications', '5', 200, '2022-11-19 09:53:19', NULL),
+(9, 'UE20CS326', 'UE20CS326: CNS', '5', 200, '2022-11-19 09:54:05', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `courseenrolls`
+--
+
+CREATE TABLE `courseenrolls` (
+  `id` int(11) NOT NULL,
+  `studentRegno` varchar(255) DEFAULT NULL,
+  `pincode` varchar(255) DEFAULT NULL,
+  `session` int(11) DEFAULT NULL,
+  `department` int(11) DEFAULT NULL,
+  `level` int(11) DEFAULT NULL,
+  `semester` int(11) DEFAULT NULL,
+  `course` int(11) DEFAULT NULL,
+  `enrollDate` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `courseenrolls`
+--
+
+INSERT INTO `courseenrolls` (`id`, `studentRegno`, `pincode`, `session`, `department`, `level`, `semester`, `course`, `enrollDate`) VALUES
+(1, 'PES2UG20CS065', '406608', 1, 1, 1, 5, 1, '2022-11-19 10:06:04'),
+(2, 'PES2UG20CS065', '406608', 1, 1, 1, 5, 7, '2022-11-19 10:06:23'),
+(3, 'PES2UG20CS066', '844980', 1, 1, 3, 5, 4, '2022-11-19 10:09:22'),
+(4, 'PES2UG20CS066', '844980', 1, 1, 3, 5, 7, '2022-11-19 10:09:42'),
+(5, 'PES2UG20CS067', '686971', 1, 1, 3, 5, 1, '2022-11-19 10:11:27'),
+(6, 'PES2UG20CS067', '686971', 1, 1, 3, 5, 7, '2022-11-19 10:11:45'),
+(7, 'PES2UG20CS068', '987234', 1, 1, 3, 5, 5, '2022-11-19 10:14:06'),
+(8, 'PES2UG20CS068', '987234', 1, 1, 3, 5, 8, '2022-11-19 10:14:22'),
+(9, 'PES2UG20CS069', '835608', 1, 1, 3, 5, 6, '2022-11-19 10:16:18'),
+(10, 'PES2UG20CS069', '835608', 1, 1, 3, 5, 7, '2022-11-19 10:16:31'),
+(11, 'PES2UG20CS087', '261826', 1, 1, 3, 5, 2, '2022-11-19 10:17:41'),
+(12, 'PES2UG20CS087', '261826', 1, 1, 3, 5, 8, '2022-11-19 10:18:34'),
+(13, 'PES2UG20CS086', '466611', 1, 1, 3, 5, 3, '2022-11-19 10:19:50'),
+(14, 'PES2UG20CS086', '466611', 1, 1, 3, 5, 9, '2022-11-19 10:20:57'),
+(15, 'PES2UG20CS127', '508030', 1, 1, 3, 5, 3, '2022-11-19 10:22:05'),
+(16, 'PES2UG20CS127', '508030', 1, 1, 3, 5, 9, '2022-11-19 10:22:56'),
+(17, 'PES2UG20CS066', '844980', 1, 1, 3, 5, 4, '2022-11-19 10:24:20'),
+(18, 'PES2UG20CS104', '616777', 1, 1, 3, 5, 4, '2022-11-19 10:27:16'),
+(19, 'PES2UG20CS104', '616777', 1, 1, 3, 5, 9, '2022-11-19 10:28:05'),
+(20, 'PES2UG20CS110', '411783', 1, 1, 3, 5, 4, '2022-11-19 10:28:58'),
+(21, 'PES2UG20CS110', '411783', 1, 1, 3, 5, 7, '2022-11-19 10:29:27'),
+(22, 'PES2UG20CS113', '774428', 1, 1, 3, 5, 4, '2022-11-19 10:30:28'),
+(23, 'PES2UG20CS113', '774428', 1, 1, 3, 5, 9, '2022-11-19 10:31:07'),
+(24, 'PES2UG20CS120', '928958', 1, 1, 3, 5, 4, '2022-11-19 10:32:03'),
+(25, 'PES2UG20CS120', '928958', 1, 1, 3, 5, 8, '2022-11-19 10:32:46'),
+(26, 'PES2UG20CS122', '322887', 1, 1, 3, 5, 4, '2022-11-19 10:33:38'),
+(27, 'PES2UG20CS122', '322887', 1, 1, 3, 5, 9, '2022-11-19 10:34:11'),
+(28, 'PES2UG20CS074', '770693', 1, 1, 3, 5, 6, '2022-11-19 10:35:56'),
+(29, 'PES2UG20CS074', '770693', 1, 1, 3, 5, 7, '2022-11-19 10:36:32'),
+(30, 'PES2UG20CS078', '732841', 1, 1, 3, 5, 6, '2022-11-19 10:37:23'),
+(31, 'PES2UG20CS078', '732841', 1, 1, 3, 5, 7, '2022-11-19 10:37:57'),
+(32, 'PES2UG20CS079', '622979', 1, 1, 3, 5, 6, '2022-11-19 10:38:43'),
+(33, 'PES2UG20CS079', '622979', 1, 1, 3, 5, 7, '2022-11-19 10:41:23'),
+(34, 'PES2UG20CS102', '378807', 1, 1, 3, 5, 6, '2022-11-19 10:42:39'),
+(35, 'PES2UG20CS102', '378807', 1, 1, 3, 5, 9, '2022-11-19 10:43:17'),
+(36, 'PES2UG20CS116', '516061', 1, 1, 3, 5, 6, '2022-11-19 10:44:20'),
+(37, 'PES2UG20CS116', '516061', 1, 1, 3, 5, 7, '2022-11-19 10:44:55'),
+(38, 'PES2UG20CS126', '674585', 1, 1, 3, 5, 6, '2022-11-19 10:45:55'),
+(39, 'PES2UG20CS126', '674585', 1, 1, 3, 5, 7, '2022-11-19 10:46:19'),
+(40, 'PES2UG20CS070', '285856', 1, 1, 3, 5, 8, '2022-11-19 10:50:32'),
+(41, 'PES2UG20CS070', '285856', 1, 1, 3, 5, 1, '2022-11-19 10:51:01'),
+(42, 'PES2UG20CS072', '146695', 1, 1, 3, 5, 8, '2022-11-19 10:51:53'),
+(43, 'PES2UG20CS072', '146695', 1, 1, 3, 5, 5, '2022-11-19 10:52:28'),
+(44, 'PES2UG20CS092', '223060', 1, 1, 3, 5, 8, '2022-11-19 10:53:46'),
+(45, 'PES2UG20CS092', '223060', 1, 1, 3, 5, 1, '2022-11-19 10:54:10'),
+(46, 'PES2UG20CS093', '837332', 1, 1, 3, 5, 8, '2022-11-19 10:54:58'),
+(47, 'PES2UG20CS093', '837332', 1, 1, 3, 5, 5, '2022-11-19 10:55:37'),
+(48, 'PES2UG20CS094', '834918', 1, 1, 3, 5, 5, '2022-11-19 10:57:05'),
+(49, 'PES2UG20CS094', '834918', 1, 1, 3, 5, 8, '2022-11-19 10:57:30'),
+(50, 'PES2UG20CS101', '581750', 1, 1, 3, 5, 8, '2022-11-19 10:58:16'),
+(51, 'PES2UG20CS101', '581750', 1, 1, 3, 5, 5, '2022-11-19 10:58:48'),
+(52, 'PES2UG20CS111', '995047', 1, 1, 3, 5, 8, '2022-11-19 10:59:49'),
+(53, 'PES2UG20CS111', '995047', 1, 1, 3, 5, 1, '2022-11-19 11:00:20'),
+(54, 'PES2UG20CS077', '525398', 1, 1, 3, 5, 5, '2022-11-19 11:04:57'),
+(55, 'PES2UG20CS077', '525398', 1, 1, 3, 5, 7, '2022-11-19 11:05:31'),
+(56, 'PES2UG20CS080', '129933', 1, 1, 3, 5, 5, '2022-11-19 11:07:04'),
+(57, 'PES2UG20CS080', '129933', 1, 1, 3, 5, 7, '2022-11-19 11:07:18'),
+(58, 'PES2UG20CS090', '984032', 1, 1, 3, 5, 5, '2022-11-19 11:08:32'),
+(59, 'PES2UG20CS090', '984032', 1, 1, 3, 5, 7, '2022-11-19 11:08:47'),
+(60, 'PES2UG20CS091', '961986', 1, 1, 3, 5, 5, '2022-11-19 11:10:40'),
+(61, 'PES2UG20CS091', '961986', 1, 1, 3, 5, 7, '2022-11-19 11:10:53'),
+(62, 'PES2UG20CS112', '276431', 1, 1, 3, 5, 5, '2022-11-19 11:12:48'),
+(63, 'PES2UG20CS112', '276431', 1, 1, 3, 5, 7, '2022-11-19 11:13:01'),
+(64, 'PES2UG20CS114', '901434', 1, 1, 3, 5, 5, '2022-11-19 11:14:22'),
+(65, 'PES2UG20CS114', '901434', 1, 1, 3, 5, 7, '2022-11-19 11:14:42'),
+(66, 'PES2UG20CS117', '864742', 1, 1, 3, 5, 5, '2022-11-19 11:15:59'),
+(67, 'PES2UG20CS117', '864742', 1, 1, 3, 5, 7, '2022-11-19 11:16:13'),
+(68, 'PES2UG20CS124', '248373', 1, 1, 3, 5, 5, '2022-11-19 11:17:17'),
+(69, 'PES2UG20CS124', '248373', 1, 1, 3, 5, 7, '2022-11-19 11:17:31'),
+(70, 'PES2UG20CS071', '318659', 1, 1, 3, 5, 1, '2022-11-19 11:19:27'),
+(71, 'PES2UG20CS071', '318659', 1, 1, 3, 5, 7, '2022-11-19 11:19:41'),
+(72, 'PES2UG20CS075', '162971', 1, 1, 3, 5, 1, '2022-11-19 11:21:49'),
+(73, 'PES2UG20CS075', '162971', 1, 1, 3, 5, 7, '2022-11-19 11:22:06'),
+(74, 'PES2UG20CS076', '978761', 1, 1, 3, 5, 1, '2022-11-19 11:23:18'),
+(75, 'PES2UG20CS076', '978761', 1, 1, 3, 5, 7, '2022-11-19 11:23:32'),
+(76, 'PES2UG20CS115', '877146', 1, 1, 3, 5, 1, '2022-11-24 05:06:49'),
+(77, 'PES2UG20CS115', '877146', 1, 1, 3, 5, 7, '2022-11-24 05:07:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `department`
+--
+
+CREATE TABLE `department` (
+  `id` int(11) NOT NULL,
+  `department` varchar(255) DEFAULT NULL,
+  `creationDate` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `department`
+--
+
+INSERT INTO `department` (`id`, `department`, `creationDate`) VALUES
+(1, 'CSE', '2022-11-19 10:03:14');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `employee_count`
+-- (See below for the actual view)
+--
+CREATE TABLE `employee_count` (
+);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `level`
+--
+
+CREATE TABLE `level` (
+  `id` int(11) NOT NULL,
+  `level` varchar(255) DEFAULT NULL,
+  `creationDate` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `level`
+--
+
+INSERT INTO `level` (`id`, `level`, `creationDate`) VALUES
+(1, '1', '2022-02-11 00:59:02'),
+(2, '2', '2022-02-11 00:59:02'),
+(3, '3', '2022-02-11 00:59:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mini_statement`
+--
+
+CREATE TABLE `mini_statement` (
+  `StudentRegno` varchar(225) DEFAULT NULL,
+  `pincode` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
+  `newstitle` varchar(255) DEFAULT NULL,
+  `newsDescription` mediumtext DEFAULT NULL,
+  `postingDate` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `news`
+--
+
+INSERT INTO `news` (`id`, `newstitle`, `newsDescription`, `postingDate`) VALUES
+(1, 'Test News', 'This is for testing. This is for testing.This is for testing.This is for testing.This is for testing.This is for testing.This is for testing.This is for testing.This is for testing.This is for testing.', '2022-02-10 17:36:50'),
+(2, 'New Course Started C#', 'This is sample text for testing.', '2022-02-11 00:54:38'),
+(3, 'DBMS: Mini Project', 'Mini project submission on 21-11-2022', '2022-11-19 09:55:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `no_of_course_enrolled`
+--
+
+CREATE TABLE `no_of_course_enrolled` (
+  `courseName` varchar(255) DEFAULT NULL,
+  `noofstudents` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `no_of_course_enrolled`
+--
+
+INSERT INTO `no_of_course_enrolled` (`courseName`, `noofstudents`) VALUES
+('UE20CS312: Data Analytics', 1),
+('UE20CS311: Advanced Algorithms', 8),
+('UE20CS314: Applied Cryptography', 7),
+('UE20CS313: Internet Of Things', 2),
+('UE20CS315: Fundamentals Of AVR', 13),
+('UE20CS316: Human Computer Interaction', 7),
+('UE20CS322: Big Data', 21),
+('UE20CS323: Graph Theory and its Applications', 10),
+('UE20CS326: CNS', 6);
+
+--
+-- Triggers `no_of_course_enrolled`
+--
+DELIMITER $$
+CREATE TRIGGER `seats_aval` BEFORE INSERT ON `no_of_course_enrolled` FOR EACH ROW BEGIN
+DECLARE error_msg varchar(255);
+set error_msg = (" no.of seats exceeded is more than 200");
+if NEW.noofstudents>200 
+then SIGNAL SQLSTATE "45000"
+set MESSAGE_TEXT = error_msg;
+end if;
+end
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `no_of_course_enrolled_backup`
+--
+
+CREATE TABLE `no_of_course_enrolled_backup` (
+  `courseName` varchar(255) DEFAULT NULL,
+  `noofstudents` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `semester`
+--
+
+CREATE TABLE `semester` (
+  `id` int(11) NOT NULL,
+  `semester` varchar(255) DEFAULT NULL,
+  `creationDate` timestamp NULL DEFAULT current_timestamp(),
+  `updationDate` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `semester`
+--
+
+INSERT INTO `semester` (`id`, `semester`, `creationDate`, `updationDate`) VALUES
+(1, '1', '2022-02-10 17:22:55', NULL),
+(2, '2', '2022-02-11 00:51:43', NULL),
+(3, '3', '2022-11-19 06:34:11', NULL),
+(4, '4', '2022-11-19 06:34:16', NULL),
+(5, '5', '2022-11-19 07:11:26', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `session`
+--
+
+CREATE TABLE `session` (
+  `id` int(11) NOT NULL,
+  `session` varchar(255) DEFAULT NULL,
+  `creationDate` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `session`
+--
+
+INSERT INTO `session` (`id`, `session`, `creationDate`) VALUES
+(1, '2022', '2022-02-10 17:10:59');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `StudentRegno` varchar(255) NOT NULL,
+  `studentPhoto` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `studentName` varchar(255) DEFAULT NULL,
+  `pincode` varchar(255) DEFAULT NULL,
+  `session` varchar(255) DEFAULT NULL,
+  `department` varchar(255) DEFAULT NULL,
+  `semester` varchar(255) DEFAULT NULL,
+  `cgpa` decimal(10,2) DEFAULT NULL,
+  `creationdate` timestamp NULL DEFAULT current_timestamp(),
+  `Status` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`StudentRegno`, `studentPhoto`, `password`, `studentName`, `pincode`, `session`, `department`, `semester`, `cgpa`, `creationdate`, `Status`) VALUES
+('PES2UG20CS065', NULL, '7baac218ae2e12f5c3d1803cad807908', 'ARIHAN AWASTHI', '406608', NULL, NULL, NULL, '7.50', '2022-11-19 09:06:59', 'Pass'),
+('PES2UG20CS066', 'Scripture for Her Floral on pink linen.jpg', 'ecec4867731ffc7ef8e5e1ed230e949e', 'ARPIT PANDEY', '844980', '2022', 'CSE', '5', '8.40', '2022-11-19 09:26:20', 'Pass'),
+('PES2UG20CS067', NULL, '7513546a61b5bd1efde633ffe752b6d5', 'ARSHAN LAWRENCE RODRIGUES', '686971', '2022', 'CSE', '5', '7.70', '2022-11-19 09:07:20', 'Pass'),
+('PES2UG20CS068', NULL, '3c46c0c904ad6c93e28812a3c3c3fa36', 'ARUNVENKAT C A', '987234', '2022', 'CSE', '5', '6.46', '2022-11-19 09:28:51', 'Pass'),
+('PES2UG20CS069', NULL, 'e009c8940943dff622eff4d4faed173e', 'ARYAN KAPOOR', '835608', '2022', 'CSE', '5', '7.88', '2022-11-19 09:33:20', 'Pass'),
+('PES2UG20CS070', NULL, 'd0e9818def140b653bd8009b54adbc71', 'ARYANSH GARG', '285856', NULL, NULL, NULL, '8.80', '2022-11-19 09:07:41', 'Pass'),
+('PES2UG20CS071', NULL, '02127a4eec1564ff46b7fa5f46becb9f', 'ASHUTOSH', '318659', NULL, NULL, NULL, '6.86', '2022-11-19 09:08:00', 'Pass'),
+('PES2UG20CS072', NULL, 'b2c611f4ffddd24131e1d5b1f54acd66', 'ASHUTOSH ROUTRAY', '146695', NULL, NULL, NULL, '7.70', '2022-11-19 09:29:07', 'Pass'),
+('PES2UG20CS074', NULL, 'ac134d0779637502faa9107632b453cb', 'ATHARV ANANT ATHAVALE', '770693', NULL, NULL, NULL, '5.00', '2022-11-19 09:33:36', 'Pass'),
+('PES2UG20CS075', NULL, '51f57285811c1b1d821a2d402eebd3a3', 'ATHARVA ANIL CHANDA', '162971', NULL, NULL, NULL, '2.80', '2022-11-19 09:08:19', 'Pass'),
+('PES2UG20CS076', NULL, '9c237f62084e2eb8ccd1ecfabca881f1', 'ATUL KRISHNAN', '978761', NULL, NULL, NULL, NULL, '2022-11-19 09:08:39', 'Pass'),
+('PES2UG20CS077', NULL, 'cec363fdf5074cd589754f39f29e93ea', 'AVANI JAIN', '525398', NULL, NULL, NULL, NULL, '2022-11-19 09:29:22', 'Pass'),
+('PES2UG20CS078', NULL, '98242bb19b8948b38cce80006b7b53d6', 'AVIJIT PANDA', '732841', NULL, NULL, NULL, NULL, '2022-11-19 09:33:52', 'Pass'),
+('PES2UG20CS079', NULL, '52db28808b57c9abd87266ed726587c0', 'AYAN AGGARWAL', '622979', NULL, NULL, NULL, NULL, '2022-11-19 09:34:11', 'Pass'),
+('PES2UG20CS080', NULL, '4668c8b6eacb5c1d13629bb7068b20d0', 'AYUSH SINGH', '129933', NULL, NULL, NULL, NULL, '2022-11-19 09:29:38', 'Pass'),
+('PES2UG20CS081', NULL, '405eb4e88b9c58bc49d1fb8a0ae2073e', 'AYUSH SINGH', '524045', NULL, NULL, NULL, NULL, '2022-11-19 09:09:01', 'Pass'),
+('PES2UG20CS082', NULL, '5baf13afa8813b75b8a567476048644e', 'AYUSHMAAN KAUSHIK', '483556', NULL, NULL, NULL, NULL, '2022-11-19 09:09:38', 'Pass'),
+('PES2UG20CS083', NULL, 'bc2b89c5d24535a4b14b05e7bcf35ac8', 'B V MURALI SAI', '906235', NULL, NULL, NULL, NULL, '2022-11-19 09:12:48', 'Pass'),
+('PES2UG20CS084', NULL, '846e15292b48d756582a113f3f4879d0', 'BANDI MONICA SREE VALLI', '784468', NULL, NULL, NULL, NULL, '2022-11-19 09:13:10', 'Pass'),
+('PES2UG20CS085', NULL, '22dcc0ae7ddb1f0827727229b007fe1b', 'BATHINI VENKATA PRANAY', '223378', NULL, NULL, NULL, NULL, '2022-11-19 09:13:24', 'Pass'),
+('PES2UG20CS086', NULL, 'bcd0bd61f9381688aacdcba40a3b2898', 'BHARATH D H', '466611', NULL, NULL, NULL, NULL, '2022-11-19 09:24:41', 'Pass'),
+('PES2UG20CS087', NULL, 'b0c5e8cc69a6d6c7f6d042b026c66c9d', 'BHARGAV HEGDE', '261826', NULL, NULL, NULL, NULL, '2022-11-19 09:23:23', 'Pass'),
+('PES2UG20CS088', NULL, 'b52b24abbc85e74ab93e395cb8485d14', 'BHAVINI MADHURANATH', '453516', NULL, NULL, NULL, NULL, '2022-11-19 09:13:45', 'Pass'),
+('PES2UG20CS089', NULL, 'cbbf0f9866493c22185e49e6142ef789', 'BHAVYA NALLAMILLI', '720194', NULL, NULL, NULL, NULL, '2022-11-19 09:14:06', 'Pass'),
+('PES2UG20CS090', NULL, '28e00333ee485a7d8e998cf830243543', 'BOLLU SAI LIKHITHA', '984032', NULL, NULL, NULL, NULL, '2022-11-19 09:29:56', 'Pass'),
+('PES2UG20CS091', NULL, '570e6a30f7c6447b38bba3a5a1c35def', 'BRAHMADEVARA UDIT', '961986', NULL, NULL, NULL, NULL, '2022-11-19 09:30:42', 'Pass'),
+('PES2UG20CS092', NULL, '03036526aaa35f8f58707a3ba3374097', 'CHAKKA RANGA TAGORE', '223060', NULL, NULL, NULL, NULL, '2022-11-19 09:15:04', 'Pass'),
+('PES2UG20CS093', NULL, '7996f70ff358d2b7962df51fb4e4eaf9', 'CHANDAN B S', '837332', NULL, NULL, NULL, NULL, '2022-11-19 09:30:59', 'Pass'),
+('PES2UG20CS094', NULL, 'c875f8b4a15d771cd925bb577ae74a94', 'CHANDAN M S', '834918', NULL, NULL, NULL, NULL, '2022-11-19 09:31:16', 'Pass'),
+('PES2UG20CS095', NULL, '2daf0c382b5c6ff1f36743269c7534c6', 'CHANDANA N', '967650', NULL, NULL, NULL, NULL, '2022-11-19 09:15:58', 'Pass'),
+('PES2UG20CS096', NULL, '10187a4333ee8245ad7f9ec9a869dab9', 'CHINNAOBULAIAHGARI VENKATA ESWAR SAI REDDY', '748839', NULL, NULL, NULL, NULL, '2022-11-19 09:16:16', 'Pass'),
+('PES2UG20CS097', NULL, 'c433630436b91a34f3405d8f0c86d1b1', 'CLAUDIUS D SOUZA', '225614', NULL, NULL, NULL, NULL, '2022-11-19 09:16:35', 'Pass'),
+('PES2UG20CS099', NULL, 'bb2efb77f4e970e20e5c51e5533b771b', 'D. ASHRITHA', '155571', NULL, NULL, NULL, NULL, '2022-11-19 09:17:04', 'Pass'),
+('PES2UG20CS100', NULL, '7a949067a568cdee31a6205e1b225a96', 'DANTULURI SAKETH VARMA', '247555', NULL, NULL, NULL, NULL, '2022-11-19 09:17:19', 'Pass'),
+('PES2UG20CS101', NULL, 'b7354012ade4f40a061f8b9fed0bd903', 'DARSHAN G ANVEKAR', '581750', NULL, NULL, NULL, NULL, '2022-11-19 09:31:32', 'Pass'),
+('PES2UG20CS102', NULL, 'd4a9f46acf4754bdfc840944d10cefc4', 'DASA A DEEPESH', '378807', NULL, NULL, NULL, NULL, '2022-11-19 09:34:33', 'Pass'),
+('PES2UG20CS103', NULL, '943114458e03ad912043e9ea19ada4ee', 'G DEEPAK', '583142', NULL, NULL, NULL, NULL, '2022-11-19 09:17:35', 'Pass'),
+('PES2UG20CS104', NULL, 'd62708b1f6b3ef1c3308deed3a133bff', 'DEEPAK KUMAR N', '616777', NULL, NULL, NULL, NULL, '2022-11-19 09:26:38', 'Pass'),
+('PES2UG20CS105', NULL, 'ba85834c21e670fcb52b47ef1e19b2a0', 'DEEPTI SHANBHAG', '621173', NULL, NULL, NULL, NULL, '2022-11-19 09:17:55', 'Pass'),
+('PES2UG20CS106', NULL, '1322e9587313276ac0dc2d609ba88a08', 'DEV M KUMAR', '211957', NULL, NULL, NULL, NULL, '2022-11-19 09:18:15', 'Pass'),
+('PES2UG20CS107', NULL, '7bb2e4f5bda2292c96f56ddec025f085', 'DEVEN MAHESH ASODEKAR', '742497', NULL, NULL, NULL, NULL, '2022-11-19 09:18:39', 'Pass'),
+('PES2UG20CS108', NULL, '739ef4081c27d4f4a6acab03658ac0f0', 'DHANUSHYA M', '105129', NULL, NULL, NULL, NULL, '2022-11-19 09:18:58', 'Pass'),
+('PES2UG20CS109', NULL, 'd56e81f8bd8ddbb86180cb7ca6c5deaf', 'DHRUTHI R', '492164', NULL, NULL, NULL, NULL, '2022-11-19 09:19:14', 'Pass'),
+('PES2UG20CS110', NULL, '14d1163627667c0f4a86581b81e19f49', 'DHRUTHI RAO K.V.', '411783', NULL, NULL, NULL, NULL, '2022-11-19 09:26:54', 'Pass'),
+('PES2UG20CS111', NULL, '7de34fa733326695ecb52844072cb51f', 'DIESHA SINGH SANJAY SINGH', '995047', NULL, NULL, NULL, NULL, '2022-11-19 09:19:32', 'Pass'),
+('PES2UG20CS112', NULL, 'd81dfa833cd6886302b48286ebf8f98a', 'DISHITHA MAHENDRAKAR', '276431', NULL, NULL, NULL, NULL, '2022-11-19 09:31:51', 'Pass'),
+('PES2UG20CS113', NULL, '045c39dafd481785846b135abe30e941', 'DIVYA K.A', '774428', NULL, NULL, NULL, NULL, '2022-11-19 09:27:24', 'Pass'),
+('PES2UG20CS114', NULL, '33701eafc5ecdd811bf6f2ef626abb86', 'DIVYA N', '901434', NULL, NULL, NULL, NULL, '2022-11-19 09:32:09', 'Pass'),
+('PES2UG20CS115', NULL, '5c70a48b1e18b62e30851451830ce501', 'DOREDLA TIRUMALA RAVI TEJA', '877146', NULL, NULL, NULL, '10.00', '2022-11-19 09:19:52', 'Pass'),
+('PES2UG20CS116', NULL, '83d4ac55c62151c667e786c8fdb5e15b', 'E S ANANTH', '516061', NULL, NULL, NULL, NULL, '2022-11-19 09:34:50', 'Pass'),
+('PES2UG20CS117', NULL, '6b77bca5fb824bad2665f3a8dc99e7bc', 'EESHAN DHAWAN', '864742', NULL, NULL, NULL, NULL, '2022-11-19 09:32:23', 'Pass'),
+('PES2UG20CS118', NULL, '782128db35c22c7e297965737f749eba', 'G SAKETH REDDY', '768674', NULL, NULL, NULL, NULL, '2022-11-19 09:20:08', 'Pass'),
+('PES2UG20CS120', NULL, 'ae7f77ea96b13427d13c912c53bb54d4', 'GAUTHAM SAAKETH KANDULA;;', '928958', NULL, NULL, NULL, NULL, '2022-11-19 09:27:45', 'Pass'),
+('PES2UG20CS121', NULL, '7233e1d012e1f9489c8a0f1c38dbd613', 'GAYATRI PRAHARSHITA PRABHALA', '534330', NULL, NULL, NULL, NULL, '2022-11-19 09:20:26', 'Pass'),
+('PES2UG20CS122', NULL, '5a3ec5aa65d723fc19c46acfe06e6cc8', 'GNANESH A', '322887', NULL, NULL, NULL, NULL, '2022-11-19 09:28:01', 'Pass'),
+('PES2UG20CS123', NULL, '63db848a9a2413cb5294226f1de8ff47', 'GOKUL G KRISHNAN', '266072', NULL, NULL, NULL, NULL, '2022-11-19 09:20:54', 'Pass'),
+('PES2UG20CS124', NULL, '8cb8f8f30c2dcf5c3d1859b83721a5c3', 'GOLLA GIRIDHARA MAANAS', '248373', NULL, NULL, NULL, NULL, '2022-11-19 09:32:40', 'Pass'),
+('PES2UG20CS126', NULL, '818ebee9eee097119b56502dfbcb9195', 'GOWRI NANDANA P K', '674585', NULL, NULL, NULL, NULL, '2022-11-19 09:35:11', 'Pass'),
+('PES2UG20CS127', NULL, '8a3e07b5c96135616d08862c70c230bd', 'GURUDATTA R KONDAMPALLIKAR', '508030', '2022', 'CSE', '5', '9.80', '2022-11-19 09:25:39', 'Pass'),
+('PES2UG20CS128', NULL, '857802e0fbee9a7209484eedf2732c72', 'GUTTA LAVANYA', '514430', '2022', 'CSE', '5', '6.95', '2022-11-19 09:21:11', 'Pass'),
+('PES2UG20CS129', NULL, '9045375754f257f780af9c6ced36691a', 'GUTTAKINDA VYSHNAVI', '765857', NULL, NULL, NULL, NULL, '2022-11-19 09:21:31', 'Pass');
+
+--
+-- Triggers `students`
+--
+DELIMITER $$
+CREATE TRIGGER `update_student` BEFORE UPDATE ON `students` FOR EACH ROW BEGIN    
+INSERT INTO mini_statement VALUES (students.StudentRegno, students.pincode); 
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userlog`
+--
+
+CREATE TABLE `userlog` (
+  `id` int(11) NOT NULL,
+  `studentRegno` varchar(255) DEFAULT NULL,
+  `userip` binary(16) DEFAULT NULL,
+  `loginTime` timestamp NULL DEFAULT current_timestamp(),
+  `logout` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `userlog`
+--
+
+INSERT INTO `userlog` (`id`, `studentRegno`, `userip`, `loginTime`, `logout`, `status`) VALUES
+(1, '10806121', 0x3a3a3100000000000000000000000000, '2022-02-11 00:55:07', NULL, 1),
+(2, '10806121', 0x3a3a3100000000000000000000000000, '2022-02-11 00:57:00', NULL, 1),
+(3, '10806121', 0x3a3a3100000000000000000000000000, '2022-02-11 00:57:22', '11-02-2022 06:31:26 AM', 1),
+(4, 'PES2UG20CS065', 0x3a3a3100000000000000000000000000, '2022-11-19 10:00:07', '19-11-2022 03:31:22 PM', 1),
+(5, 'PES2UG20CS065', 0x3a3a3100000000000000000000000000, '2022-11-19 10:02:34', '19-11-2022 03:32:56 PM', 1),
+(6, 'PES2UG20CS065', 0x3a3a3100000000000000000000000000, '2022-11-19 10:04:22', '19-11-2022 03:36:38 PM', 1),
+(7, 'PES2UG20CS066', 0x3a3a3100000000000000000000000000, '2022-11-19 10:06:52', '19-11-2022 03:37:16 PM', 1),
+(8, 'PES2UG20CS066', 0x3a3a3100000000000000000000000000, '2022-11-19 10:08:08', '19-11-2022 03:39:45 PM', 1),
+(9, 'PES2UG20CS067', 0x3a3a3100000000000000000000000000, '2022-11-19 10:10:02', '19-11-2022 03:41:54 PM', 1),
+(10, 'PES2UG20CS068', 0x3a3a3100000000000000000000000000, '2022-11-19 10:12:46', '19-11-2022 03:44:35 PM', 1),
+(11, 'PES2UG20CS069', 0x3a3a3100000000000000000000000000, '2022-11-19 10:15:04', '19-11-2022 03:46:50 PM', 1),
+(12, 'PES2UG20CS087', 0x3a3a3100000000000000000000000000, '2022-11-19 10:17:08', '19-11-2022 03:49:02 PM', 1),
+(13, 'PES2UG20CS086', 0x3a3a3100000000000000000000000000, '2022-11-19 10:19:17', '19-11-2022 03:51:05 PM', 1),
+(14, 'PES2UG20CS127', 0x3a3a3100000000000000000000000000, '2022-11-19 10:21:29', '19-11-2022 03:53:05 PM', 1),
+(15, 'PES2UG20CS066', 0x3a3a3100000000000000000000000000, '2022-11-19 10:23:56', '19-11-2022 03:54:50 PM', 1),
+(16, 'PES2UG20CS104', 0x3a3a3100000000000000000000000000, '2022-11-19 10:26:31', '19-11-2022 03:58:19 PM', 1),
+(17, 'PES2UG20CS110', 0x3a3a3100000000000000000000000000, '2022-11-19 10:28:33', '19-11-2022 03:59:43 PM', 1),
+(18, 'PES2UG20CS113', 0x3a3a3100000000000000000000000000, '2022-11-19 10:29:54', '19-11-2022 04:01:14 PM', 1),
+(19, 'PES2UG20CS120', 0x3a3a3100000000000000000000000000, '2022-11-19 10:31:34', '19-11-2022 04:02:54 PM', 1),
+(20, 'PES2UG20CS122', 0x3a3a3100000000000000000000000000, '2022-11-19 10:33:11', '19-11-2022 04:04:18 PM', 1),
+(21, 'PES2UG20CS069', 0x3a3a3100000000000000000000000000, '2022-11-19 10:35:11', '19-11-2022 04:05:16 PM', 1),
+(22, 'PES2UG20CS074', 0x3a3a3100000000000000000000000000, '2022-11-19 10:35:28', '19-11-2022 04:06:43 PM', 1),
+(23, 'PES2UG20CS078', 0x3a3a3100000000000000000000000000, '2022-11-19 10:36:53', '19-11-2022 04:08:01 PM', 1),
+(24, 'PES2UG20CS079', 0x3a3a3100000000000000000000000000, '2022-11-19 10:38:11', '19-11-2022 04:11:34 PM', 1),
+(25, 'PES2UG20CS102', 0x3a3a3100000000000000000000000000, '2022-11-19 10:42:05', '19-11-2022 04:13:27 PM', 1),
+(26, 'PES2UG20CS116', 0x3a3a3100000000000000000000000000, '2022-11-19 10:43:54', '19-11-2022 04:15:07 PM', 1),
+(27, 'PES2UG20CS126', 0x3a3a3100000000000000000000000000, '2022-11-19 10:45:24', '19-11-2022 04:16:25 PM', 1),
+(28, 'PES2UG20CS086', 0x3a3a3100000000000000000000000000, '2022-11-19 10:47:11', '19-11-2022 04:17:16 PM', 1),
+(29, 'PES2UG20CS104', 0x3a3a3100000000000000000000000000, '2022-11-19 10:47:44', '19-11-2022 04:17:49 PM', 1),
+(30, 'PES2UG20CS113', 0x3a3a3100000000000000000000000000, '2022-11-19 10:48:11', '19-11-2022 04:18:21 PM', 1),
+(31, 'PES2UG20CS122', 0x3a3a3100000000000000000000000000, '2022-11-19 10:48:39', '19-11-2022 04:18:48 PM', 1),
+(32, 'PES2UG20CS127', 0x3a3a3100000000000000000000000000, '2022-11-19 10:48:59', '19-11-2022 04:19:09 PM', 1),
+(33, 'PES2UG20CS068', 0x3a3a3100000000000000000000000000, '2022-11-19 10:49:31', '19-11-2022 04:19:39 PM', 1),
+(34, 'PES2UG20CS070', 0x3a3a3100000000000000000000000000, '2022-11-19 10:49:50', '19-11-2022 04:21:04 PM', 1),
+(35, 'PES2UG20CS072', 0x3a3a3100000000000000000000000000, '2022-11-19 10:51:28', '19-11-2022 04:22:45 PM', 1),
+(36, 'PES2UG20CS087', 0x3a3a3100000000000000000000000000, '2022-11-19 10:52:58', '19-11-2022 04:23:05 PM', 1),
+(37, 'PES2UG20CS092', 0x3a3a3100000000000000000000000000, '2022-11-19 10:53:18', '19-11-2022 04:24:18 PM', 1),
+(38, 'PES2UG20CS093', 0x3a3a3100000000000000000000000000, '2022-11-19 10:54:35', '19-11-2022 04:25:43 PM', 1),
+(39, 'PES2UG20CS094', 0x3a3a3100000000000000000000000000, '2022-11-19 10:56:35', '19-11-2022 04:27:33 PM', 1),
+(40, 'PES2UG20CS101', 0x3a3a3100000000000000000000000000, '2022-11-19 10:57:52', '19-11-2022 04:28:56 PM', 1),
+(41, 'PES2UG20CS111', 0x3a3a3100000000000000000000000000, '2022-11-19 10:59:26', '19-11-2022 04:30:24 PM', 1),
+(42, 'PES2UG20CS120', 0x3a3a3100000000000000000000000000, '2022-11-19 11:00:44', '19-11-2022 04:30:52 PM', 1),
+(43, 'PES2UG20CS077', 0x3a3a3100000000000000000000000000, '2022-11-19 11:04:08', '19-11-2022 04:35:35 PM', 1),
+(44, 'PES2UG20CS080', 0x3a3a3100000000000000000000000000, '2022-11-19 11:06:36', '19-11-2022 04:37:22 PM', 1),
+(45, 'PES2UG20CS090', 0x3a3a3100000000000000000000000000, '2022-11-19 11:08:09', '19-11-2022 04:38:52 PM', 1),
+(46, 'PES2UG20CS091', 0x3a3a3100000000000000000000000000, '2022-11-19 11:10:15', '19-11-2022 04:40:57 PM', 1),
+(47, 'PES2UG20CS112', 0x3a3a3100000000000000000000000000, '2022-11-19 11:12:19', '19-11-2022 04:43:07 PM', 1),
+(48, 'PES2UG20CS114', 0x3a3a3100000000000000000000000000, '2022-11-19 11:13:56', '19-11-2022 04:44:59 PM', 1),
+(49, 'PES2UG20CS117', 0x3a3a3100000000000000000000000000, '2022-11-19 11:15:35', '19-11-2022 04:46:17 PM', 1),
+(50, 'PES2UG20CS124', 0x3a3a3100000000000000000000000000, '2022-11-19 11:16:39', '19-11-2022 04:47:36 PM', 1),
+(51, 'PES2UG20CS071', 0x3a3a3100000000000000000000000000, '2022-11-19 11:19:04', '19-11-2022 04:49:59 PM', 1),
+(52, 'PES2UG20CS075', 0x3a3a3100000000000000000000000000, '2022-11-19 11:21:09', NULL, 1),
+(53, 'PES2UG20CS075', 0x3a3a3100000000000000000000000000, '2022-11-19 11:21:15', '19-11-2022 04:52:12 PM', 1),
+(54, 'PES2UG20CS076', 0x3a3a3100000000000000000000000000, '2022-11-19 11:22:49', '19-11-2022 04:54:37 PM', 1),
+(55, 'PES2UG20CS066', 0x3a3a3100000000000000000000000000, '2022-11-20 09:44:46', '20-11-2022 03:43:28 PM', 1),
+(56, 'PES2UG20CS066', 0x3a3a3100000000000000000000000000, '2022-11-22 06:33:17', '22-11-2022 12:04:09 PM', 1),
+(57, 'PES2UG20CS066', 0x3a3a3100000000000000000000000000, '2022-11-22 06:36:55', '22-11-2022 12:07:31 PM', 1),
+(58, 'PES2UG20CS065', 0x3a3a3100000000000000000000000000, '2022-11-22 19:23:44', NULL, 1),
+(59, 'PES2UG20CS065', 0x3a3a3100000000000000000000000000, '2022-11-24 04:44:08', NULL, 1),
+(60, 'PES2UG20CS115', 0x3a3a3100000000000000000000000000, '2022-11-24 05:02:37', NULL, 1),
+(61, 'PES2UG20CS115', 0x3a3a3100000000000000000000000000, '2022-11-24 05:08:49', NULL, 1),
+(62, 'PES2UG20CS115', 0x3a3a3100000000000000000000000000, '2022-11-24 05:09:33', '24-11-2022 10:40:52 AM', 1),
+(63, 'PES2UG20CS115', 0x3a3a3100000000000000000000000000, '2022-11-24 06:16:27', '24-11-2022 11:47:17 AM', 1),
+(64, 'PES2UG20CS115', 0x3a3a3100000000000000000000000000, '2022-11-24 06:19:21', '24-11-2022 12:05:59 PM', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `employee_count`
+--
+DROP TABLE IF EXISTS `employee_count`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `employee_count`  AS SELECT `f_employee_count`(1) AS `f_employee_count(1)``f_employee_count(1)`  ;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `course`
+--
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `courseCode` (`courseCode`),
+  ADD UNIQUE KEY `courseCode_2` (`courseCode`);
+
+--
+-- Indexes for table `courseenrolls`
+--
+ALTER TABLE `courseenrolls`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `studentRegno` (`studentRegno`);
+
+--
+-- Indexes for table `department`
+--
+ALTER TABLE `department`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `level`
+--
+ALTER TABLE `level`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `semester`
+--
+ALTER TABLE `semester`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `session`
+--
+ALTER TABLE `session`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`StudentRegno`);
+
+--
+-- Indexes for table `userlog`
+--
+ALTER TABLE `userlog`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `course`
+--
+ALTER TABLE `course`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `courseenrolls`
+--
+ALTER TABLE `courseenrolls`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+
+--
+-- AUTO_INCREMENT for table `department`
+--
+ALTER TABLE `department`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `level`
+--
+ALTER TABLE `level`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `semester`
+--
+ALTER TABLE `semester`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `session`
+--
+ALTER TABLE `session`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `userlog`
+--
+ALTER TABLE `userlog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `courseenrolls`
+--
+ALTER TABLE `courseenrolls`
+  ADD CONSTRAINT `courseenrolls_ibfk_1` FOREIGN KEY (`studentRegno`) REFERENCES `students` (`StudentRegno`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
